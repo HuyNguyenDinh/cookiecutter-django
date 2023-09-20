@@ -386,3 +386,8 @@ WEBPACK_LOADER = {
 {%- endif %}
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+{%- if cookiecutter.use_opentelemetry == 'y' %}
+SERVICE_NAME = env.str("SERVICE_NAME")
+JAEGER_DOMAIN = env.str("JAEGER_DOMAIN")
+{%- endif %}

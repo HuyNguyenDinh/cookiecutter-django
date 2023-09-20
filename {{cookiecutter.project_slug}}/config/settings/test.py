@@ -42,7 +42,3 @@ WEBPACK_LOADER["DEFAULT"]["LOADER_CLASS"] = "webpack_loader.loader.FakeWebpackLo
 {%- endif %}
 # Your stuff...
 # ------------------------------------------------------------------------------
-{%- if cookiecutter.use_opentelemetry == 'y' %}
-SERVICE_NAME = env.str("SERVICE_NAME", default="test_" + { cookiecutter.project_slug})
-JAEGER_DOMAIN = env.str("JAEGER_DOMAIN")
-{%- endif %}

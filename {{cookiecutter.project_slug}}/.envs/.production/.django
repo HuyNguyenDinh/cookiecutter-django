@@ -75,3 +75,8 @@ REDIS_URL=redis://redis:6379/0
 CELERY_FLOWER_USER=!!!SET CELERY_FLOWER_USER!!!
 CELERY_FLOWER_PASSWORD=!!!SET CELERY_FLOWER_PASSWORD!!!
 {% endif %}
+
+{% if cookiecutter.use_opentelemetry == 'y'}
+SERVICE_NAME=
+JAEGER_DOMAIN
+{% endif %}
