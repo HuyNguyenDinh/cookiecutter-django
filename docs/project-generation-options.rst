@@ -53,20 +53,25 @@ timezone:
 windows:
     Indicates whether the project should be configured for development on Windows.
 
-use_pycharm:
-    Indicates whether the project should be configured for development with PyCharm_.
+editor:
+    Select an editor to use. The choices are:
+
+    1. None
+    2. PyCharm_
+    3. `VS Code`_
 
 use_docker:
-    Indicates whether the project should be configured to use Docker_ and `Docker Compose`_.
+    Indicates whether the project should be configured to use Docker_, `Docker Compose`_ and `devcontainer`_.
 
 postgresql_version:
     Select a PostgreSQL_ version to use. The choices are:
 
-    1. 14
-    2. 13
-    3. 12
-    4. 11
-    5. 10
+    1. 15
+    2. 14
+    3. 13
+    4. 12
+    5. 11
+    6. 10
 
 cloud_provider:
     Select a cloud provider for static & media files. The choices are:
@@ -110,8 +115,8 @@ Both Gulp and Webpack support Bootstrap recompilation with real-time variables a
 use_celery:
     Indicates whether the project should be configured to use Celery_.
 
-use_mailhog:
-    Indicates whether the project should be configured to use MailHog_.
+use_mailpit:
+    Indicates whether the project should be configured to use Mailpit_.
 
 use_sentry:
     Indicates whether the project should be configured to use Sentry_.
@@ -130,6 +135,7 @@ ci_tool:
     2. `Travis CI`_
     3. `Gitlab CI`_
     4. `Github Actions`_
+    5. `Drone CI`_
 
 keep_local_envs_in_vcs:
     Indicates whether the project's ``.envs/.local/`` should be kept in VCS
@@ -148,9 +154,11 @@ debug:
 .. _Apache Software License 2.0: http://www.apache.org/licenses/LICENSE-2.0
 
 .. _PyCharm: https://www.jetbrains.com/pycharm/
+.. _VS Code: https://github.com/microsoft/vscode
 
 .. _Docker: https://github.com/docker/docker
 .. _Docker Compose: https://docs.docker.com/compose/
+.. _devcontainer: https://containers.dev/
 
 .. _PostgreSQL: https://www.postgresql.org/docs/
 
@@ -177,7 +185,7 @@ debug:
 
 .. _Celery: https://github.com/celery/celery
 
-.. _MailHog: https://github.com/mailhog/MailHog
+.. _Mailpit: https://github.com/axllent/mailpit
 
 .. _Sentry: https://github.com/getsentry/sentry
 
@@ -188,5 +196,7 @@ debug:
 .. _Travis CI: https://travis-ci.org/
 
 .. _GitLab CI: https://docs.gitlab.com/ee/ci/
+
+.. _Drone CI: https://docs.drone.io/pipeline/overview/
 
 .. _Github Actions: https://docs.github.com/en/actions
