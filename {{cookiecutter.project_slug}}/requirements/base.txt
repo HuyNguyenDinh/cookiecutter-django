@@ -48,6 +48,9 @@ drf-spectacular==0.26.4  # https://github.com/tfranzel/drf-spectacular
 {%- if cookiecutter.frontend_pipeline == 'Webpack' %}
 django-webpack-loader==2.0.1  # https://github.com/django-webpack/django-webpack-loader
 {%- endif %}
+{%- if cookiecutter.use_mysql %}
+mysqlclient=2.2.0
+{%- endif %}
 {%- if cookiecutter.use_opentelemetry %}
 opentelemetry-api==1.19.0
 opentelemetry-exporter-jaeger==1.19.0
