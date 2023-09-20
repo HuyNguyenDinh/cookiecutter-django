@@ -78,5 +78,5 @@ CELERY_FLOWER_PASSWORD=!!!SET CELERY_FLOWER_PASSWORD!!!
 
 {% if cookiecutter.use_opentelemetry == 'y' %}
 SERVICE_NAME=
-JAEGER_DOMAIN
+JAEGER_DOMAIN=
 {% endif %}
