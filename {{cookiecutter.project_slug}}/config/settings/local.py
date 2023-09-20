@@ -101,3 +101,8 @@ WEBPACK_LOADER["DEFAULT"]["CACHE"] = not DEBUG  # noqa: F405
 {%- endif %}
 # Your stuff...
 # ------------------------------------------------------------------------------
+
+{%- if cookiecutter.use_opentelemetry == 'y' %}
+SERVICE_NAME = env.str("SERVICE_NAME", default="local_" + { cookiecutter.project_slug})
+JAEGER_DOMAIN = env.str("JAEGER_DOMAIN")
+{%- endif %}
