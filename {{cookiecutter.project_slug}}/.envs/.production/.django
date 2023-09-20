@@ -76,7 +76,7 @@ CELERY_FLOWER_USER=!!!SET CELERY_FLOWER_USER!!!
 CELERY_FLOWER_PASSWORD=!!!SET CELERY_FLOWER_PASSWORD!!!
 {% endif %}
 
-{% if cookiecutter.use_opentelemetry == 'y'}
+{% if cookiecutter.use_opentelemetry == 'y' %}
 SERVICE_NAME=
 JAEGER_DOMAIN
 {% endif %}
