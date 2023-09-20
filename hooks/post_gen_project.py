@@ -260,6 +260,10 @@ def remove_dotgithub_folder():
 def remove_dotdrone_file():
     os.remove(".drone.yml")
 
+def remove_opentelemetry_hook():
+    os.remove("implement_otel_instrument.py")
+    shutil.rmtree("tracing")
+
 
 def generate_random_string(length, using_digits=False, using_ascii_letters=False, using_punctuation=False):
     """
@@ -523,6 +527,9 @@ def main():
 
     if "{{ cookiecutter.use_async }}".lower() == "n":
         remove_async_files()
+
+    if "{{ cookiecutter.use_opentelemetry }}".lower() == "n":
+        remove_opentelemetry_hook()
 
     print(SUCCESS + "Project initialized, keep up the good work!" + TERMINATOR)
 

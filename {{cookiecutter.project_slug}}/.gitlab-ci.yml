@@ -43,10 +43,17 @@ pytest:
   image: python:3.11
   tags:
     - python
+  {%- if cookiecutter.use_mysql == 'y' %}
+  services:
+    - mysql:latest
+  variables:
+    DATABASE_URL: mysql://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres/$POSTGRES_DB
+  {%- else %}
   services:
     - postgres:{{ cookiecutter.postgresql_version }}
   variables:
     DATABASE_URL: pgsql://$POSTGRES_USER:$POSTGRES_PASSWORD@postgres/$POSTGRES_DB
+  {%- endif %}
   before_script:
     - pip install -r requirements/local.txt
   script:

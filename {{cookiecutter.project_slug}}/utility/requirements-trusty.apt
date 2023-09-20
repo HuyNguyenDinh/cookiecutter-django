@@ -12,6 +12,10 @@ zlib1g-dev
 ##Postgresql and psycopg2 dependencies
 libpq-dev
 
+##Mysql dependencies
+default-libmysqlclient-dev
+pkg-config
+
 ##Pillow dependencies
 libtiff4-dev
 libjpeg8-dev

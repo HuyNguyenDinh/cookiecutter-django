@@ -48,3 +48,17 @@ drf-spectacular==0.26.4  # https://github.com/tfranzel/drf-spectacular
 {%- if cookiecutter.frontend_pipeline == 'Webpack' %}
 django-webpack-loader==2.0.1  # https://github.com/django-webpack/django-webpack-loader
 {%- endif %}
+{% - if cookiecutter.use_opentelemetry %}
+opentelemetry-api==1.19.0
+opentelemetry-exporter-jaeger==1.19.0
+opentelemetry-exporter-jaeger-proto-grpc==1.19.0
+opentelemetry-exporter-jaeger-thrift==1.19.0
+opentelemetry-instrumentation==0.40b0
+opentelemetry-instrumentation-django==0.40b0
+opentelemetry-instrumentation-logging==0.40b0
+opentelemetry-instrumentation-requests==0.40b0
+opentelemetry-instrumentation-wsgi==0.40b0
+opentelemetry-sdk==1.19.0
+opentelemetry-semantic-conventions==0.40b0
+opentelemetry-util-http==0.40b0
+{%- endif %}
