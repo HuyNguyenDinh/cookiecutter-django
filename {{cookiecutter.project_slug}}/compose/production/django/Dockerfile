@@ -36,8 +36,14 @@ ARG BUILD_ENVIRONMENT=production
 RUN apt-get update && apt-get install --no-install-recommends -y \
   # dependencies for building Python packages
   build-essential \
+  {% if cookiecutter.use_mysql %}
+  # mysql dependencies
+  default-libmysqlclient-dev \
+  pkg-config 
+  {% else %}
   # psycopg2 dependencies
   libpq-dev
+  {% endif %}
 
 # Requirements are installed here to ensure they will be cached.
 COPY ./requirements .
