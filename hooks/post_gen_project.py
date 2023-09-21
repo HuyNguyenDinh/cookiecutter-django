@@ -266,14 +266,13 @@ def remove_opentelemetry_hook():
 
 def remove_database_env(use_mysql=False):
     env_dirs = [
-        "{{ cookiecutter.project_slug }}",
         ".envs",
     ]
     if use_mysql:
         env_dirs.append(".mysql")
     else:
         env_dirs.append(".postgres")
-    os.remove(os.path.join(*env_dirs))
+    os.remove(os.path.join("{{ cookiecutter.project_slug }}", *env_dirs))
 
 
 def generate_random_string(length, using_digits=False, using_ascii_letters=False, using_punctuation=False):
@@ -487,12 +486,20 @@ def main():
                 "Heroku support is enabled so keeping them does not make sense "
                 "given your current setup." + TERMINATOR
             )
+            if "{{ cookiecutter.use_mysql }}".lower() == "n":
+                remove_database_env(True)
+            else:
+                remove_database_env()
         remove_envs_and_associated_files()
     else:
         append_to_gitignore_file(".env")
         append_to_gitignore_file(".envs/*")
         if "{{ cookiecutter.keep_local_envs_in_vcs }}".lower() == "y":
             append_to_gitignore_file("!.envs/.local/")
+            if "{{ cookiecutter.use_mysql }}".lower() == "n":
+                remove_database_env(True)
+            else:
+                remove_database_env()
 
     if "{{ cookiecutter.frontend_pipeline }}" in ["None", "Django Compressor"]:
         remove_gulp_files()
@@ -541,11 +548,7 @@ def main():
 
     if "{{ cookiecutter.use_opentelemetry }}".lower() == "n":
         remove_opentelemetry_hook()
-    
-    if "{{ cookiecutter.use_mysql }}".lower() == "n":
-        remove_database_env(True)
-    else:
-        remove_database_env()
+            
 
     print(SUCCESS + "Project initialized, keep up the good work!" + TERMINATOR)
 
