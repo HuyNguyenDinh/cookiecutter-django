@@ -265,15 +265,12 @@ def remove_opentelemetry_hook():
     shutil.rmtree("tracing")
 
 def remove_database_env(use_mysql=False):
-    env_dirs = [
-        ".envs",
-    ]
-    if use_mysql:
-        env_dirs.append(".mysql")
-    else:
-        env_dirs.append(".postgres")
-    os.remove(os.path.join("{{ cookiecutter.project_slug }}", ".local", *env_dirs))
-    os.remove(os.path.join("{{ cookiecutter.project_slug }}", ".production", *env_dirs))
+    environment = [".local", ".production"]
+    for i in environment:
+        if use_mysql:
+            os.remove(os.path.join("{{ cookiecutter.project_slug }}", ".envs", ".local", ".postgres"))
+        else:
+            os.remove(os.path.join("{{ cookiecutter.project_slug }}", ".envs", ".local", ".mysql"))
 
 
 def generate_random_string(length, using_digits=False, using_ascii_letters=False, using_punctuation=False):
