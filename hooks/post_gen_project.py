@@ -272,7 +272,8 @@ def remove_database_env(use_mysql=False):
         env_dirs.append(".mysql")
     else:
         env_dirs.append(".postgres")
-    os.remove(os.path.join("{{ cookiecutter.project_slug }}", *env_dirs))
+    os.remove(os.path.join("{{ cookiecutter.project_slug }}", ".local", *env_dirs))
+    os.remove(os.path.join("{{ cookiecutter.project_slug }}", ".production", *env_dirs))
 
 
 def generate_random_string(length, using_digits=False, using_ascii_letters=False, using_punctuation=False):
