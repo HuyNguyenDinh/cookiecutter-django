@@ -268,9 +268,9 @@ def remove_database_env(use_mysql=False):
     environment = [".local", ".production"]
     for i in environment:
         if use_mysql:
-            os.remove(os.path.join("{{ cookiecutter.project_slug }}", ".envs", ".local", ".postgres"))
+            os.remove(os.path.join("{{ cookiecutter.project_slug }}", ".envs", i, ".postgres"))
         else:
-            os.remove(os.path.join("{{ cookiecutter.project_slug }}", ".envs", ".local", ".mysql"))
+            os.remove(os.path.join("{{ cookiecutter.project_slug }}", ".envs", i, ".mysql"))
 
 
 def generate_random_string(length, using_digits=False, using_ascii_letters=False, using_punctuation=False):
@@ -484,10 +484,6 @@ def main():
                 "Heroku support is enabled so keeping them does not make sense "
                 "given your current setup." + TERMINATOR
             )
-            if "{{ cookiecutter.use_mysql }}".lower() == "n":
-                remove_database_env(True)
-            else:
-                remove_database_env()
         remove_envs_and_associated_files()
     else:
         append_to_gitignore_file(".env")
