@@ -264,6 +264,17 @@ def remove_opentelemetry_hook():
     os.remove("implement_otel_instrument.py")
     shutil.rmtree("tracing")
 
+def remove_database_env(use_mysql=False):
+    env_dirs = [
+        "{{ cookiecutter.project_slug }}",
+        ".envs",
+    ]
+    if use_mysql:
+        env_dirs.append(".mysql")
+    else:
+        env_dirs.append(".postgres")
+    os.remove(os.path.join(**env_dirs))
+
 
 def generate_random_string(length, using_digits=False, using_ascii_letters=False, using_punctuation=False):
     """
@@ -530,6 +541,11 @@ def main():
 
     if "{{ cookiecutter.use_opentelemetry }}".lower() == "n":
         remove_opentelemetry_hook()
+    
+    if "{{ cookiecutter.use_mysql }}".lower() == "n":
+        remove_database_env(True)
+    else:
+        remove_database_env()
 
     print(SUCCESS + "Project initialized, keep up the good work!" + TERMINATOR)
 
